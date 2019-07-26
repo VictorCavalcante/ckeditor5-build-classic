@@ -31,6 +31,8 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Font from '@ckeditor/ckeditor5-font/src/font';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -60,7 +62,9 @@ ClassicEditor.builtinPlugins = [
 	Table,
 	TableToolbar,
 	Alignment,
-	Font
+	Font,
+	Indent,
+	IndentBlock
 ];
 
 // Editor configuration.
@@ -94,6 +98,8 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'imageUpload',
 			'insertTable',
+			'outdent',
+			'indent',
 			'undo',
 			'redo'
 		]
@@ -101,9 +107,16 @@ ClassicEditor.defaultConfig = {
 	image: {
 		toolbar: [
 			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
+			'imageStyle:alignLeft',
+			'imageStyle:alignRight'
+		],
+		styles: [
+			// This option is equal to a situation where no style is applied.
+			'full',
+			// This represents an image aligned to the left.
+			'alignLeft',
+			// This represents an image aligned to the right.
+			'alignRight'
 		]
 	},
 	table: {
